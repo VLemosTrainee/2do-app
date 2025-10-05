@@ -10,9 +10,20 @@ return Application::configure(basePath: dirname(__DIR__))
         commands: __DIR__.'/../routes/console.php',
         health: '/up',
     )
-    ->withMiddleware(function (Middleware $middleware): void {
-        //
+    ->withMiddleware(function (Middleware $middleware) {
+        $middleware->alias([
+            'admin' => \App\Http\Middleware\EnsureUserIsAdmin::class,
+        ]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         //
-    })->create();
+    })
+    // ==========================================================
+    // ADICIONE ESTE NOVO MÉTODO E O PROVIDER DENTRO DELE
+    // ==========================================================
+    ->withProviders([
+        App\Providers\AuthServiceProvider::class, // Regista o nosso provider de autorização
+        Laravel\Fortify\FortifyServiceProvider::class, // Regista o provider do Fortify
+    ])
+    // ==========================================================
+    ->create();
