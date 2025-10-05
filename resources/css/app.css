@@ -1,11 +1,35 @@
-@import 'tailwindcss';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
-@source '../../storage/framework/views/*.php';
-@source '../**/*.blade.php';
-@source '../**/*.js';
+/*
+|--------------------------------------------------------------------------
+| Estilos Personalizados para o Typed.js
+|--------------------------------------------------------------------------
+|
+| Melhora a aparência e animação do cursor.
+|
+*/
+.typed-cursor {
+    /* Usa a cor primária da nossa marca (definida em tailwind.config.js) */
+    color: theme('colors.brand-primary');
 
-@theme {
-    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
-        'Segoe UI Symbol', 'Noto Color Emoji';
+    /* Garante que o cursor tem o mesmo tamanho e peso da fonte do texto */
+    font-size: inherit;
+    font-weight: inherit;
+    
+    /* Animação de piscar suave */
+    opacity: 1;
+    animation: blink 0.7s infinite;
+
+    /* Ajustes finos de alinhamento vertical */
+    display: inline-block;
+    vertical-align: middle;
+}
+
+@keyframes blink {
+    0% { opacity: 1; }
+    49% { opacity: 1; }
+    50% { opacity: 0; }
+    100% { opacity: 0; }
 }
