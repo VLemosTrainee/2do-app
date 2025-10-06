@@ -44,9 +44,13 @@ class TaskPolicy
      * Determine whether the user can delete the model.
      */
     public function delete(User $user, Task $task): bool
-    {
-        return false;
-    }
+{
+    // PERMITIR SE:
+    // 1. O utilizador for um admin.
+    // OU
+    // 2. O utilizador for o dono da equipa do projeto.
+    return $user->isAdmin() || $user->id === $task->project->team->user_id;
+}
 
     /**
      * Determine whether the user can restore the model.

@@ -20,10 +20,17 @@ class ProjectPolicy
      * Determine whether the user can view the model.
      */
     public function view(User $user, Project $project): bool
-    {
-        return false;
-    }
+{
+    // PERMITIR SE:
+    // 1. O utilizador for o dono da equipa do projeto.
+    // OU
+    // 2. O utilizador for um membro da equipa do projeto.
+    
+    $isOwner = $user->id === $project->team->user_id;
+    $isMember = $project->team->members()->where('user_id', $user->id)->exists();
 
+    return $isOwner || $isMember;
+}
     /**
      * Determine whether the user can create models.
      */

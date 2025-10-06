@@ -41,4 +41,21 @@ class ProjectController extends Controller
         $project->load('tasks.assignees', 'team.members'); // Carrega as relações necessárias
         return view('admin.projects.show', compact('project'));
     }
+
+    public function search(Request $request)
+    {
+        $query = $request->get('q');
+        if (!$query) return response()->json([]);
+
+        $projects = \App\Models\Project::where('name', 'LIKE', "%{$query}%")->limit(10)->get(['id', 'name']);
+        return response()->json($projects);
+    }
+
+    public function getTeamMembers(Project $project)
+    {
+        // Carrega a relação 'members' da relação 'team' do projeto
+        $members = $project->team->members;
+
+        return response()->json($members);
+    }
 }

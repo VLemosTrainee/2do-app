@@ -29,23 +29,26 @@ class TeamController extends Controller
         return view('admin.teams.create', compact('users'));
     }
 
-    public function store(Request $request)
-    {
-        $request->validate([
-            'name' => ['required', 'string', 'max:255'],
-            'members' => ['required', 'array'],
-            'members.*' => ['exists:users,id'],
-        ]);
+public function store(Request $request)
+{
+    $request->validate([
+        'name' => ['required', 'string', 'max:255'],
+        'members' => ['required', 'array'],
+        'members.*' => ['exists:users,id'],
+    ]);
 
-        $team = new Team();
-        $team->name = $request->name;
-        $team->user_id = Auth::id(); // O admin que criou é o dono
-        $team->save();
+    $team = new Team();
+    $team->name = $request->name;
+    $team->user_id = Auth::id();
+    $team->save();
 
-        $team->members()->sync($request->members);
+    // Garante que o ID do admin (Auth::id()) está sempre na lista de membros a ser sincronizada.
+    $membersToSync = collect($request->members)->push(Auth::id())->unique();
+    
+    $team->members()->sync($membersToSync);
 
-        return redirect()->route('admin.teams.index')->with('success', 'Equipa criada com sucesso.');
-    }
+    return redirect()->route('admin.teams.index')->with('success', 'Equipa criada com sucesso.');
+}
 
     /**
      * Display the specified resource.
@@ -77,5 +80,15 @@ class TeamController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+
+    public function search(Request $request)
+    {
+        $query = $request->get('q');
+        if (strlen($query) < 2) return response()->json([]);
+
+        $teams = \App\Models\Team::where('name', 'LIKE', "%{$query}%")->limit(10)->get();
+
+        return response()->json($teams);
     }
 }
