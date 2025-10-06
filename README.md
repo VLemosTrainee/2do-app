@@ -1,61 +1,114 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+<p align="center"><a href="https://64.media.tumblr.com/97d3f7d4cb6937db3572de7b6c0d1453/b3abd6c5be8de38e-31/s540x810/f9f4d9bf918c9e1ef50d8d31423178c70c5b33d0.pnj" target="_blank"><img src="https://64.media.tumblr.com/97d3f7d4cb6937db3572de7b6c0d1453/b3abd6c5be8de38e-31/s540x810/f9f4d9bf918c9e1ef50d8d31423178c70c5b33d0.pnj" width="250" alt="2DO Logo"></a></p>
+
 
 <p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
+    <!-- LOGOTIPOS DAS TECNOLOGIAS DO 2DO -->
+    <img src="https://img.shields.io/badge/Laravel-FF2D20?style=for-the-badge&logo=laravel&logoColor=white" alt="Laravel">
+    <img src="https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white" alt="Tailwind CSS">
+    <img src="https://img.shields.io/badge/Alpine.js-8BC0D0?style=for-the-badge&logo=alpine.js&logoColor=white" alt="Alpine.js">
+    <img src="https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white" alt="MySQL">
 </p>
 
-## About Laravel
+# 🚀 2DO: Plataforma de Gestão de Trabalho e Colaboração
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Sobre o 2DO
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+O 2DO é uma plataforma de gestão de trabalho desenvolvida com Laravel e foco em colaboração. Não se trata apenas de uma lista de afazeres pessoal, mas sim de uma ferramenta robusta para gerenciar projetos e tarefas em ambientes de grupo e individual. A plataforma foi criada para fornecer aos administradores uma visão completa e centralizada do fluxo de trabalho.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+Nossa interface prioriza a UI/UX, utilizando Tailwind CSS para ser totalmente responsiva e moderna, com foco em cores harmoniosas baseadas no Azul Turquesa/Teal.
 
-## Learning Laravel
+### Principais Características Técnicas
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+*   Frontend Reativo com **Alpine.js** (utilizado para contagem dinâmica, filtros e manipulação de formulários em modal).
+*   Estrutura de Roteamento otimizada para separação entre rotas de Administrador e Usuário Comum.
+*   **Dashboard Gerencial** detalhada com KPIs e visualizações de prioridade em tempo real.
+*   CRUD completo para Projetos, Equipes e Usuários.
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+## Funcionalidades de Gestão
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+O 2DO facilita a gestão de trabalho através de módulos essenciais:
+
+-   **Dashboard Centralizada:** Visão executiva com KPIs de progresso, tarefas pendentes e concluídas.
+-   **Distribuição de Prioridades:** Destaque visual e quantitativo das tarefas classificadas como Alta, Média e Baixa.
+-   **Gestão de Equipes (Teams):** Criação de grupos e vinculação a projetos específicos.
+-   **Alocação de Tarefas:** Atribuição de tarefas a membros específicos e acompanhamento de status (Concluído/Pendente).
+-   **Interface de Edição Rápida:** Edição de tarefas via modal (para a lista de gestão) e formulário dedicado (para criação).
+
+## Como Instalar e Iniciar
+
+### Pré-requisitos
+
+*   PHP >= 8.2
+*   Composer
+*   Node.js & npm (ou Yarn)
+
+### Instalação
+
+1.  **Clone o repositório:**
+    ```bash
+    git clone [URL_DO_SEU_REPOSITÓRIO] 2do-app
+    cd 2do-app
+    ```
+
+2.  **Instale as dependências PHP:**
+    ```bash
+    composer install
+    ```
+
+3.  **Configure o ambiente (.env):**
+    ```bash
+    cp .env.example .env
+    # Edite o .env com suas credenciais de banco de dados (DB)
+    ```
+
+4.  **Gere a chave da aplicação:**
+    ```bash
+    php artisan key:generate
+    ```
+
+5.  **Instale e compile os assets do Frontend:**
+    ```bash
+    npm install
+    npm run dev # Utilize 'npm run build' para produção
+    ```
+
+6.  **Execute as migrações e seeders:**
+    ```bash
+    php artisan migrate --seed
+    ```
+
+7.  **Inicie o servidor local:**
+    ```bash
+    php artisan serve
+    ```
+    
+Acesse o sistema via `http://127.0.0.1:8000`.
+
+## Aprendendo mais sobre Laravel
+
+O 2DO é baseado no Laravel. Para aprender mais sobre o framework subjacente, confira estes recursos:
+
+- [Documentação Oficial do Laravel](https://laravel.com/docs)
+- [Laravel Bootcamp](https://bootcamp.laravel.com)
+- [Laracasts (Tutoriais em vídeo)](https://laracasts.com)
 
 ## Laravel Sponsors
 
 We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
 
-### Premium Partners
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+## Contribuindo
 
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+Thank you for considering contributing to the 2DO project! We value community input.
 
 ## Code of Conduct
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+In order to ensure that the 2DO community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
 
-## Security Vulnerabilities
+## Segurança
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+Se você descobrir uma vulnerabilidade de segurança no projeto 2DO, por favor, entre em contato.
 
-## License
+## Licença
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+The 2DO platform is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
